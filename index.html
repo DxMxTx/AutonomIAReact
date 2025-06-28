@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-t">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutonomIA</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 90%22><path d=%22M10 28C10 22.4772 14.4772 18 20 18H80C85.5228 18 90 22.4772 90 28V80C90 85.5228 85.5228 90 80 90H20C14.4772 90 10 85.5228 10 80V28Z%22 fill=%22%234A00E0%22/><path d=%22M35 18V10C35 6.68629 37.6863 4 41 4H59C62.3137 4 65 6.68629 65 10V18%22 fill=%22%234A00E0%22/><circle cx=%2250%22 cy=%2250%22 r=%227%22 fill=%22%2300BCD4%22/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: var(--blanco-puro, #FFFFFF); /* Default to white */
+            transition: background-color 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        @media print {
+            @page {
+                margin: 1cm;
+                size: A4 portrait;
+            }
+
+            /* General print settings for color */
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* When printing is triggered from the invoice modal... */
+            
+            /* 1. Hide all direct children of the app's root div */
+            body.print-active > #root > * {
+                display: none !important;
+            }
+
+            /* 2. Un-hide ONLY the printable container */
+            body.print-active > #root > .printable-container {
+                display: block !important;
+                position: static !important;
+                background: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                border: none !important;
+                width: 100% !important;
+            }
+
+            /* 3. Reset the modal panel to act as the page body */
+            body.print-active .printable-container > div {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border-radius: 0 !important;
+            }
+            
+            /* 4. Ensure invoice content has correct colors */
+            body.print-active #invoice-modal-content {
+                color-scheme: light !important;
+            }
+
+            body.print-active #invoice-modal-content * {
+                color: #000 !important;
+            }
+
+            body.print-active #invoice-modal-content .bg-gris-tecnologico {
+                background-color: #f3f4f6 !important;
+            }
+            
+            /* This class hides elements like buttons inside the modal */
+            .print\:hidden {
+                display: none !important;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^0.15.0",
+    "chart.js": "https://esm.sh/chart.js@^4.4.3",
+    "react-chartjs-2": "https://esm.sh/react-chartjs-2@^5.2.0"
+  }
+}
+</script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'purpura-innovador': 'var(--purpura-innovador)',
+            'lavanda-digital': 'var(--lavanda-digital)',
+            'gris-tecnologico': 'var(--gris-tecnologico)',
+            'fucsia-electrico': 'var(--fucsia-electrico)',
+            'cian-neon': 'var(--cian-neon)',
+            'grafito': 'var(--grafito)',
+            'gris-acero': 'var(--gris-acero)',
+            'gris-platino': 'var(--gris-platino)',
+            'blanco-puro': 'var(--blanco-puro)',
+          }
+        }
+      }
+    }
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="dist/app.js"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

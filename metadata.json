@@ -1,0 +1,6 @@
+{
+  "name": "AutonomIA",
+  "description": "An AI-powered chat application for freelancers to manage clients, invoices, and appointments through a conversational interface. Data is stored locally in the browser.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

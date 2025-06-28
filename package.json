@@ -1,0 +1,22 @@
+{
+  "name": "autonomia-app",
+  "version": "1.0.0",
+  "description": "AI-powered chat application for freelancers",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build:js": "esbuild index.tsx --bundle --outfile=dist/app.js --format=esm --jsx=automatic --external:react --external:react-dom --external:@google/genai --external:chart.js --external:react-chartjs-2",
+    "build:html": "node -e \"const fs=require('fs'); fs.mkdirSync('dist', {recursive:true}); let html=fs.readFileSync('index.html','utf8'); html=html.replace('src=\\\"dist/app.js\\\"','src=\\\"app.js\\\"'); fs.writeFileSync('dist/index.html', html);\"",
+    "build": "npm run clean && npm run build:html && npm run build:js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^0.15.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.0"
+  }
+}

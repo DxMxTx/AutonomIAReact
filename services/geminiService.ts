@@ -2,7 +2,7 @@ import { GoogleGenAI, GenerateContentResponse } from '@google/genai';
 import { AIResponse, ChatMessage, Client, Invoice, AgendaEvent, DownPayment, UserData } from '../types';
 import * as db from './localDbService';
 
-const API_KEY = "AIzaSyAmW3sAswichYLeBnAEN8LbG8XJjoeM7qc";
+const API_KEY = "XXX";
 
 const getSystemPrompt = (
     clients: Client[],
